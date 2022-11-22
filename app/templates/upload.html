@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <title>upload</title>
+    <style>
+        .upload-button {
+        /* Used to position the input */
+        position: relative;
+    
+        /* Center the content */
+        align-items: center;
+        display: flex;
+    
+        /* Border */
+        border: 1px solid black;
+        border-radius: 0.25rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .upload-button__input {
+        /* Take the full size */
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    
+        /* Make it transparent */
+        opacity: 0;
+    }
+    
+    .upload-button__icon {
+        margin-right: 0.5rem;
+    }
+    .button {
+        background-color: #007bff; /* blue */
+        border-radius: 15px 15px;
+        color: white;
+        padding: 10px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .center-h {
+        display: flex; /* or display:grid */
+        justify-content: center;
+      }
+
+      .center-v {
+        display: flex;
+        align-items: center;
+      }
+
+      .h-500 {
+        height: 500;
+      }
+
+ 
+    </style>
+<body>
+<form method='POST' action="{% url 'app:upload' %}">
+    {% csrf_token %}
+        <div class="h-500 center-v center-h">
+        <input type="file" name="file" class="button"/>
+        <input type="submit" name="submit" class="button" value="Upload"/></div><br>
+        <div  class="h-500 center-v center-h">
+        <a href="{% url 'app:logout' %}"  class="button" role="button" aria-pressed="true">back</a></br></div>
+    </form>
+</body>
+</head>
+</html>

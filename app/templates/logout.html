@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<style>
+
+ .button {
+        background-color: #007bff; /* blue */
+        border-radius: 15px 15px;
+        color: white;
+        padding: 10px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .center-h {
+        display: flex; /* or display:grid */
+        justify-content: center;
+      }
+
+      .center-v {
+        display: flex;
+        align-items: center;
+      }
+
+      .h-500 {
+        height: 500;
+      }
+
+      .logoutLblPos{
+
+        position:fixed;
+        right:10px;
+        top:5px;
+     }
+
+</style>
+<body>
+<form method="POST" action="{% url 'app:logout' %}">
+  <div class="h-500 center-v center-h">
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+    <h1><b>Welcome to Markytics {{request.user}}</b></h1>
+    <br></div>
+     <label class="logoutLblPos">
+        <button type="logout" name="logout" class="button" a href="{% url 'app:logout' %}">Logout</button>
+        </label></a></br>
+    {% endif%}
+    <div class="h-500 center-v center-h">
+    <a href="{% url 'app:upload' %}" class="button" role="button" aria-pressed="true">Upload File</a>
+    <a href="{% url 'app:view' %}" class="button" role="button" aria-pressed="true">View Table</a>
+  </div></br></br>
+  
+    </form>
+</body>
+</head>   
+</html>
