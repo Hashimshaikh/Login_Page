@@ -15,6 +15,9 @@ from app.models import pangresdata
 from django.core import serializers
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from .forms import detailsform
+from django.contrib import messages
+
 
 def index(request):
     print(request)
@@ -123,7 +126,7 @@ def logout_1(request):
 #C:\Users\admin\Documents\studentdata.xlsx
 
 def view_1(request):
-    data=pangresdata.objects.all()
+    data=pangresdata.objects.all().order_by('id')
     all_page=request.GET.get('page',1)
     print('All_page',all_page)
     page = Paginator(data,per_page=10)
@@ -133,6 +136,9 @@ def view_1(request):
     nums = "a" * page_obj.paginator.num_pages
     context = {}
 
+    context['data']= page_obj
+    context['nums']= nums
+
     #try:
         #users = page.page(page)
     #except PageNotAnInteger:
@@ -141,36 +147,79 @@ def view_1(request):
         #users = page.page(page.num_pages)
     #data=serializers.serialize("python",pangresdata.objects.all())
 
-    if request.method == 'POST':
-        search = request.POST["query"]
-        print(search)
-        mulitple_q = Q(id__icontains=search) | Q(name__icontains=search) | Q(marks__icontains=search) | Q(grade__icontains=search)
-        data1=pangresdata.objects.filter(mulitple_q).order_by('-id','-name','-marks','-grade')
-        #context['data']= data
-        #data=pangresdata.objects.all()
-        all_page1=request.GET.get('page',1)
-        print('All_page1',all_page1)
-        page1 = Paginator(data1,per_page=10)
-        print("page1",page1)    
-        page_obj1=page1.get_page(all_page1)
-        print("Page Obj1",page_obj1)
-        nums1 = "a" * page_obj1.paginator.num_pages
-        print('num1',nums1)
-        context = {}
-        #context={'data':data,
+    if request.method =='POST':
+
+        if 'submit0' in request.POST:
+            search = request.POST["query"]
+            print(search)
+            mulitple_q = Q(id__icontains=search) | Q(name__icontains=search) | Q(marks__icontains=search) | Q(grade__icontains=search)
+            data1=pangresdata.objects.filter(mulitple_q).order_by('-id','-name','-marks','-grade')
+            #context['data']= data
+            #data=pangresdata.objects.all()
+            all_page1=request.GET.get('page',1)
+            print('All_page1',all_page1)
+            page1 = Paginator(data1,per_page=10)
+            print("page1",page1)    
+            page_obj1=page1.get_page(all_page1)
+            print("Page Obj1",page_obj1)
+            nums1 = "a" * page_obj1.paginator.num_pages
+            print('num1',nums1)
+            context = {}
+            #context={'data':data,
+            #'data':page_obj}
+            context['data']= page_obj1
+            #context['data']= data1
+            #context['nums']= nums1
+            #data=serializers.serialize("python",pangresdata.objects.filter(name__icontains=search).order_by('-name'))
+            #data=pangresdata.objects.all()
+            #print(alldata)
+            #print(data)
+            return render(request,"view.html",context)
+        #context= {'data':data,
         #'data':page_obj}
-        context['data']= page_obj1
-        #context['data']= data1
-        #context['nums']= nums1
-        #data=serializers.serialize("python",pangresdata.objects.filter(name__icontains=search).order_by('-name'))
-        #data=pangresdata.objects.all()
-        #print(alldata)
-        #print(data)
-        return render(request,"view.html",context)
-    #context= {'data':data,
-    #'data':page_obj}
-    context['data']= page_obj
-    context['nums']= nums
+
+    
+        if request.POST.get("update_submit"):
+            # pk = request.GET.get('pk')
+            # object = get_object_or_404(Paper, pk = pk)
+            # form = PaperForm(instance=object)
+            # return render(request, 'edit_paper_modal.html', {
+            # 'object': object,
+            # 'pk': pk,
+            # 'form': form,
+            #      })
+
+            object=pangresdata.objects.get(id = request.POST.get("id"))
+            object.name = request.POST.get('name')
+            object.marks = request.POST.get('marks')
+            object.grade = request.POST.get('grade')
+            object.save()
+    
+            # id=request.POST['id']
+            # name=request.POST['name']
+            # print(name)
+            # marks=request.POST['marks']
+            # print(name)
+            # grade=request.POST['grade']
+            # print(name)
+            # member = pangresdata(id=id,name=name, marks=marks, grade=grade)
+            # print(member)
+            # member.save()
+            #context={'member':member}
+            
+            # return render(request,"view.html") 
+
+        # if 'submit2' in request.POST:
+        #     member=pangresdata.objects.filter().delete()
+        #     return render(request,"view.html") 
+        if request.POST.get("delete_submit"):
+            print('hii')
+            print(request.POST.get("id"))
+            member = pangresdata.objects.get(id=request.POST.get("id"))
+            member.delete()
+           
+  
+        
     return render(request,"view.html",context)
 
 
@@ -189,3 +238,39 @@ def upload_1(request):
         print(d_f)
         return render(request,"upload.html")
     return render(request,"upload.html")
+
+
+# def edit_1(request,id):
+#     object=pangresdata.objects.get(id=id)
+#     return render(request,'view.html',{'object':object})
+
+# def update_1(request,id):
+#     object=pangresdata.objects.get(id=id)
+#     form=detailsform(request.POST,instance=object)
+#     if form.is_valid:
+#         form.save()
+#     #if request.method == 'POST':
+#         object=pangresdata.objects.all()
+#         messages.success(request,"User Update Successfully")
+#         return render(request,'view.html',{'object':object})
+#     return render(request,'view.html')
+    
+    
+
+
+
+#def update(request,id):
+    #object=Details.objects.get(id=id)
+    #form=detailsform(request.POST,instance=object)
+    #if form.is_valid:
+        #form.save()
+        #object=Details.objects.all()
+        #return redirect('retrieve')
+
+# def delete_1(request,id):
+#     object=pangresdata.objects.filter(id=id).delete()
+#     context={'object':object}
+#     return render(request,'app:view',context)
+#     #Details.objects.filter(id=pk).delete()
+#     #return redirect('retrieve')
+    

@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<title>view</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
 <style>
+
   .box { 
     margin: 20px auto;
     width: 100%;
@@ -33,29 +48,215 @@
     position:fixed;
     right:10px;
     top:5px;
- }
+  }
+  .table {
+    margin: auto;
+    width: 50% !important; 
+  }
+  body {
+    color: #566787;
+  background: #f5f5f5;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 13px;
+  }
+  .table-wrapper {
+    background: #fff;
+    padding: 20px 25px;
+    margin: 30px 0;
+  border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  }
+  .table-title {        
+  padding-bottom: 15px;
+  background: #435d7d;
+  color: #fff;
+  padding: 16px 30px;
+  margin: -20px -25px 10px;
+  border-radius: 3px 3px 0 0;
+  }
+  .table-title h2 {
+  margin: 5px 0 0;
+  font-size: 24px;
+  }
+  .table-title .btn-group {
+  float: right;
+  }
+  .table-title .btn {
+  color: #fff;
+  float: right;
+  font-size: 13px;
+  border: none;
+  min-width: 50px;
+  border-radius: 2px;
+  border: none;
+  outline: none !important;
+  margin-left: 10px;
+  }
+  .table-title .btn i {
+  float: left;
+  font-size: 21px;
+  margin-right: 5px;
+  }
+  .table-title .btn span {
+  float: left;
+  margin-top: 2px;
+  }
+  table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+  padding: 12px 15px;
+  vertical-align: middle;
+  }
+  table.table tr th:first-child {
+  width: 60px;
+  }
+  table.table tr th:last-child {
+  width: 100px;
+  }
+  table.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #fcfcfc;
+  }
+  table.table-striped.table-hover tbody tr:hover {
+  background: #f5f5f5;
+  }
+  table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+  }	
+  table.table td:last-child i {
+  opacity: 0.9;
+  font-size: 22px;
+    margin: 0 5px;
+  }
+  table.table td a {
+  font-weight: bold;
+  color: #566787;
+  display: inline-block;
+  text-decoration: none;
+  outline: none !important;
+  }
+  table.table td a:hover {
+  color: #2196F3;
+  }
+  table.table td a.edit {
+    color: #FFC107;
+  }
+  table.table td a.delete {
+    color: #F44336;
+  }
+  table.table td i {
+    font-size: 19px;
+  }
+  table.table .avatar {
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 10px;
+  }
+
+
+    float: left;
+    margin-top: 10px;
+    font-size: 13px;
+
+
+  /* Modal styles */
+  .modal .modal-dialog {
+  max-width: 400px;
+  }
+  .modal .modal-header, .modal .modal-body, .modal .modal-footer {
+  padding: 20px 30px;
+  }
+  .modal .modal-content {
+  border-radius: 3px;
+  }
+  .modal .modal-footer {
+  background: #ecf0f1;
+  border-radius: 0 0 3px 3px;
+  }
+  .modal .modal-title {
+    display: inline-block;
+  }
+  .modal .form-control {
+  border-radius: 2px;
+  box-shadow: none;
+  border-color: #dddddd;
+  }
+  .modal textarea.form-control {
+  resize: vertical;
+  }
+  .modal .btn {
+  border-radius: 2px;
+  min-width: 100px;
+  }	
+  .modal form label {
+  font-weight: normal;
+  }
+
+  .center {
+    text-align: center;
+  }
   
+  .pagination {
+    display: inline-block;
+  }
   
-    </style>
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+  }
+  
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
+
+ </style>
+
+    <!--{% for message in message %} 
+    <h3 style="color:red">{{message}}</h3>
+    {% endfor %}-->
+
+    
   </head>
 <body>
+
+<!-- Search Engine -->
 <form method='POST' action="{% url 'app:view' %}">
     {% csrf_token %}
         <div class="box">
           <div class="container-1"> 
+
+            <input type="hidden" id="submit0" type="text" name="submit0" class="form-control" value="">
+
         <input type="text" name="query" id="myinput" placeholder="Search..."/>
         <button type="submit" class="button" name="submit">search</button></div></div><br>
 
-        <div class="col-md-12">
-            <h1 class="text-center">DATA</h1>
+        <!-- End Search -->
+
+
+        
+        <!-- TABLE -->
+
+        <div class="col-lg-12">
+            <h1 class="text-center">DATA</h1></div>
       
-        <table class="table table-sm">
+        <div><table class="table table-responsive-sm">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">STUDENT_NAME</th>
                 <th scope="col">STUDENT_MARKS</th>
                 <th scope="col">GRADE</th>
+                <th scope="col">ACTIONS</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -65,17 +266,103 @@
                     <td>{{msg.name}}</td>
                     <td>{{msg.marks}}</td>
                     <td>{{msg.grade}}</td>
-                </tr>
+                    <td>
+                      <!--<a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+                      <a href="#edit" class="edit"  data-toggle="modal" onclick="update_data('{{msg.id}}','{{msg.name}}','{{msg.marks}}','{{msg.grade}}')" value={{msg.id}}><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                      <a href="#delete" class="delete"  data-toggle="modal" onclick="delete_data('{{msg.id}}','{{msg.name}}')" value={{msg.id}}><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
+
+                      {% comment %} <button class="btn btn-danger" class="delete" data-toggle="modal" {% endcomment %}
+                            {% comment %} data-target="#delete">Delete </button> {% endcomment %}
+                  </td>
+                      <!--ul class="list-inline m-0">
+                        <li class="list-inline-item"><
+                          <div class="main">
+                          <a href="{}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                      <span class="glyphicon glyphicon-pencil"></span> Edit</a></li>
+                      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">  
+                              <h5 class="modal-title" id="exampleModalLongTitle">Update Form</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <h2>Update Form</h2>
+                              {% for message in message %}
+                              <h3 style="color:green">{{message}}</h3>
+                              {% endfor %}
+
+                                   <label for="exampleInput">name</label>
+                                    <input type="text" name="name" value="{{object.name}}" /><br />
+                                    <label for="exampleInputEmail1">marks</label>
+                                    <input type="text" name="marks" value="{{object.marks}}" /><br />
+                                    <label for="exampleInputEmail1">grade</label>
+                                    <input type="text" name="grade" value="{{object.grade}}" /><br />
+                                    {% comment %} <input type="submit" value="Update" /><br /> {% endcomment %}
+                             
+                                
+                                  <div class="modal-footer">
+                                    <button type="button" a href="{% url 'app:view' %}" class="btn btn-secondary" data-dismiss="modal">Close</a></button>
+                                    <button type="submit"  a href="{}"class="btn btn-primary">Save changes</a></button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>-->
+                      
+
+                
+                      <!--<li class="list-inline-item">
+                        <div class="main">
+                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                          <span class="fa fa-trash"></span> DELETE</a></li></td>
+                          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">DELETE DATA</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button><br>
+                                  <p>Are you sure you want to delete your account?</p>
+
+              
+                          <div class="modal-footer">
+                            <button type="button" a href="{% url 'app:view' %}" class="btn btn-secondary" data-dismiss="modal">Close</a></button>
+                            <button type="submit"  a href=""class="btn btn-primary">Delete</a></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ul>-->
+              </tr>
             {% endfor %}
         </tbody>
-    </table> 
+    </table></div >
+   
     </form><br>
-    <label class="logoutLblPos">
-    <a href="{% url 'app:logout' %}" class="button">back</button></a></label>
 
+    <!-- End Table -->
+
+
+
+    <!--Logout button-->
+
+  <div>
+    <label class="logoutLblPos">
+    <a href="{% url 'app:logout' %}" class="button">back</button></a></label></div>
+
+
+    <!-- Pagination -->
+    <div class="center">
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-    
           {% if data.has_previous %}
           <li class="page-item active"><a class="page-link" href="?page=1" class="button">&laquo; first</a></li>
             <li class="page-item"><a class="page-link" href="?page={{ data.previous_page_number }}" class="button">previous</a></li>         
@@ -100,10 +387,136 @@
 
     </ul>
   </nav>
+</div>
+
+  <!-- End of Pagination -->
+
+
+ 	<!-- Edit Modal HTML -->
+   
+   <div id="edit" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form method="POST" action="{% url 'app:view' %}">
+          {% csrf_token %}>
+
+          <input type="hidden" id="submit1" type="text" name="submit1" class="form-control" value="">
+
+
+					<div class="modal-header">						
+						<h4 class="modal-title">Edit Student</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">					
+						<div class="form-group">
+							<label>Name</label>
+              <input id="name_update" type="text" name="name" class="form-control" value="">
+						</div>
+						<div class="form-group">
+							<label>Marks</label>
+							<input id="marks_update" type="text" name="marks" class="form-control" value="">
+            </div>
+						<!--<div class="form-group">
+							<label>Address</label>
+							<textarea class="form-control" required></textarea>
+						</div>-->
+						<div class="form-group">
+							<label>Grade</label>
+							<input id="grade_update" type="text" name="grade" class="form-control" value="">					
+					</div>
+
+          
+							<input type="hidden" id="id_update" type="text" name="id" class="form-control" value="">
+
+              
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" name="update_submit" class="btn btn-info" value="Update">
+					</div>
+        </div>
+				</form>
+			</div>
+		</div>
+	</div>
  
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+
+	<!-- Delete Modal HTML -->
+
+  
+	<div id="delete" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form method="POST" name="delete" action="{% url 'app:view' %}">
+          {% csrf_token %}>>
+          
+          <input type="hidden" id="submit2" type="text" name="submit2" class="form-control" value="">
+
+					<div class="modal-header">						
+						<h4 class="modal-title">Delete Student</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+      
+					<div class="modal-body">	
+          
+            <p id="a"></p>	
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>This action cannot be undone.</small></p>
+
+            <input type="hidden" id="id_delete" type="text" name="id" class="form-control" value="">
+            
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" name="delete_submit" class="btn btn-danger" value="Delete">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+<!-- script function for Update Modal and Delete Modal -->
+<script>
+ 
+  function update_data(id, name, marks, grade){
+  console.log(id)
+  console.log(name)
+  console.log(marks)
+  console.log(grade)
+  $('#name_update').val(name)
+  $('#name_update').text(name)
+
+  $('#marks_update').val(marks)
+  $('#marks_update').text(marks)
+
+
+  $('#grade_update').val(grade)
+  $('#grade_update').text(grade)
+  
+
+  $('#id_update').val(id)
+}
+
+
+function delete_data(id,name) {
+  console.log(id)
+
+  $('#name_delete').val(name)
+
+  $('#id_delete').val(id)
+
+  document.getElementById('a').innerHTML = name;
+  
+}
+  
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
 </html>
